@@ -1,0 +1,49 @@
+.card {
+	border: none;
+	.card-body {
+		a .card-title {
+			font-weight: bold;
+			letter-spacing: 1px;
+			font-size: 21px;
+			line-height: 26px;
+			margin-bottom: 0.75em;
+			color: $body-color;
+
+			&:hover, &:focus {
+				color: $umd_dkred;
+				text-decoration: underline;
+			}
+		}
+		.card-text {
+			font-size: 16px;
+			line-height: 21px;
+			font-weight: 300;
+
+			&.footer {
+				text-transform: uppercase;
+				font-size: 13px;
+				line-height: 16px;
+
+				span {
+					color: $textgray;
+				}
+
+				span:first-child {
+					&::after {
+						content: '/';
+						padding-left: 10px;
+						margin-right: 10px;
+					}
+				}
+				a {
+					&:hover, &:focus {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+	img {
+		border-radius: 0;
+	}
+}

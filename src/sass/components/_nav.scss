@@ -1,0 +1,31 @@
+.nav-item {
+	.nav-btn {
+		padding: 5px 15px;
+		font-size: 13px;
+		margin-top: 4px; 
+		margin-left: 10px;
+
+		color: #fff;
+		background-color: $umd_red;
+
+		&:hover, &:focus {
+			background-color: $umd_dkred;
+			border-color: $umd_dkred;
+		}
+
+		@include media-breakpoint-down(sm) {
+			background: transparent;
+			color: $umd_red;
+			border: 0;
+			font-weight: bold;
+			padding: 0;
+			margin: 0;
+
+			&:hover, &:focus {
+				background-color: transparent;
+				color: $umd_dkred;
+			}
+		}
+	
+	}
+}

@@ -1,0 +1,191 @@
+// Accordion Styles
+.acc-main-title {
+    color: $umd_red;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+.u-position-absolute {
+    position: absolute;
+}
+
+.u-position-relative {
+    position: relative;
+}
+
+.accordion {
+    // border: 1px solid rgba(0, 0, 0, 0.1);
+    // border-radius: 2px;
+}
+
+// .accordion__item + .accordion__item {
+//     border-top: 1px solid rgba(0, 0, 0, 0.1);
+// }
+
+.accordion__item--has-icon {
+    position: relative;
+}
+
+.accordion__title {
+    background-color: #fff;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid $umd_lightborder;
+    position: relative;
+
+    @include media-breakpoint-down(sm) {
+        padding: 10px 16px;
+    }
+
+    &:active, &:hover, &:focus {
+        outline: none;
+        background-color: $umd_light !important;
+    }
+}
+
+.accordion__title:hover {
+    background-color: #ddd;
+}
+
+.accordion__body {
+    padding: 20px;
+    display: block;
+    animation: fadein 0.35s ease-in;
+
+    // max-height: 300px;
+    // overflow: scroll;
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+    border-bottom: 1px solid $umd_lightborder;
+
+    button.ais-RefinementList-showMore {
+        border: 1px solid $umd_lightgray;
+        background-color: transparent;
+        color: $textgray;
+        font-size: 13px;
+        line-height: 13px;
+
+        &:hover, &:focus {
+            color: #fff;
+        }
+    }
+}
+
+.accordion__body--hidden {
+    display: none;
+    opacity: 0;
+    animation: fadein 0.35s ease-in;
+}
+
+.accordion__title > *:last-child,
+.accordion__body > *:last-child {
+    margin-bottom: 0;
+}
+
+.accordion__arrow {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -6px;
+}
+
+.accordion__arrow::after,
+.accordion__arrow::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 2px;
+    background-color: currentColor;
+    content: '';
+}
+
+.accordion__arrow::before {
+    left: 4px;
+    transform: rotate(45deg);
+}
+
+[aria-expanded='true'] .accordion__arrow::before, [aria-selected='true'] .accordion__arrow::before {
+    transform: rotate(-45deg);
+}
+
+.accordion__arrow::after {
+    right: 4px;
+    transform: rotate(-45deg);
+}
+
+[aria-expanded='true'] .accordion__arrow::after, [aria-selected='true'] .accordion__arrow::after {
+    transform: rotate(45deg);
+}
+
+.accordion__arrow::before,
+.accordion__arrow::after {
+    transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+}
+
+// Accordion Animation
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes move-down {
+    0% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(5px);
+    }
+    30% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes move-up {
+    0% {
+        transform: translateY(0);
+    }
+    10% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-5px);
+    }
+    30% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.accordion__title--animated:hover .accordion__arrow {
+    animation-name: move-down;
+    animation-duration: 1.5s;
+}
+
+.accordion__title--animated[aria-expanded='true']:hover .accordion__arrow {
+    animation-name: move-up;
+    animation-duration: 1.5s;
+}

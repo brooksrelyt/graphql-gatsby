@@ -1,0 +1,62 @@
+.list-group {
+	margin-bottom: 1.5em;
+	
+	a.list-group-item {
+		border: 0;
+		& {
+			color: $body-color;
+			font-size: 16px;
+			line-height: 26px;
+			font-weight: bold;
+			letter-spacing: 0.5;
+			
+			&:hover, &:focus {
+				color: $umd_dkred;
+			}
+		}
+		&:first-child {
+			font-weight: bold;
+			text-transform: uppercase;
+			text-align: center;
+			color: $body-color;
+			letter-spacing: 1px;
+			border-bottom: 3px solid #000;
+		}
+	}
+
+	span {
+		padding-left: 1.25rem;
+		font-size: 13px;
+		line-height: 21px;
+		text-transform: uppercase;
+		letter-spacing: 1.5px;
+		color: $textgray;
+		margin-bottom: 0.5em;
+	}
+}
+
+.tag-list {
+	li {
+		color: $textgray;
+		font-size: 13px;
+		line-height: 16px;
+
+		&:last-child {
+			content: " ";
+		}
+
+		&:after {
+			content: "/";
+			padding-left: 10px;
+			margin-right: 5px;
+		}
+		a {
+			color: $textgray;
+
+			&:hover, &:focus {
+				color: $umd_dkred;
+
+			}
+		}
+	}
+}
