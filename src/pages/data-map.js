@@ -14,10 +14,10 @@ export default ({ data }) => (
       </div>
       <div className="row med-spaces">
       {data.umdHub.articles.data.slice(0, 10).map((article, i) => (
-        <div className="col-4">
-          <Card key={i}>
+        <div className="col-4" key={i}>
+          <Card>
             {article.hero_image.map((hero, i) => (
-              <div>
+              <div key={i}>
                 <CardImg top width="100%" src={hero.url_1200_630} alt="Card image cap" />
               </div>
             ))}
