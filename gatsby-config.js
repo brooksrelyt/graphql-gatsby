@@ -15,14 +15,14 @@ module.exports = {
         url: `https://rickandmortyapi-gql.now.sh/`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-graphql`,
-    //   options: {
-    //     typeName: `HUBAPI`,
-    //     fieldName: `umdHub`,
-    //     url: `https://hub-middleware.netlify.com/.netlify/functions/express/graphql/`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `HUBAPI`,
+        fieldName: `umdHub`,
+        url: `https://hub-middleware.netlify.com/.netlify/functions/express/graphql/`,
+      },
+    },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
