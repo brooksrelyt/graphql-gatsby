@@ -20,7 +20,7 @@ export default () => (
     render={data => (
       <header>
         {console.log(data.id)}
-        {console.log(data.id)}
+        {console.log(data.allDataJson.edges[0].node.authorship_date.unformatted)}
         <p>{data.id} test</p>
       </header>
     )}
