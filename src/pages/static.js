@@ -9,8 +9,8 @@ export default () => (
           edges {
             node {
               id
-              authors {
-                title
+              authorship_date {
+                unformatted
               }
             }
           }
@@ -19,8 +19,8 @@ export default () => (
     `}
     render={data => (
       <header>
-        {console.log(data)}
-        {console.log(data.authors)}
+        {console.log(data.id)}
+        {console.log(data.id)}
         <p>{data.id} test</p>
       </header>
     )}
