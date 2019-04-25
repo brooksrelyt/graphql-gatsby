@@ -9,6 +9,18 @@ Hero Banner Styles
     box-sizing: border-box;
     background: fixed;
 
+    &.half {
+        height: 400px;
+
+        .h-textarea {
+            height: 400px;
+
+            .h-textarea-inner {
+                top: 12vh;
+            }
+        }
+    }
+
     &.tall {
         height: auto !important;
     }
