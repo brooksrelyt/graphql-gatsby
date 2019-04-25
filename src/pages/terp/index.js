@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { ListGroup, ListGroupItem, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 import Layout from "../../components/layout"
@@ -52,9 +52,9 @@ export default ({ data }) => (
                   
                 </a>
                 <CardBody>
-                  <a href="{article.url}">
+                  <Link to="/article/{article.slug}">
                     <CardTitle>{article.title}</CardTitle>
-                  </a>
+                  </Link>
                   <CardText>{article.summary}</CardText>
                   <CardText className="footer">
                     <span><a className="comment" href="/">0 Comment</a></span><span className="date">{article.authorship_date.formatted_short}</span>
@@ -65,6 +65,12 @@ export default ({ data }) => (
             ))}
           </div>
         </section>
+
+
+
+
+
+
         <aside className="col-md-3">
           <div>
             <ListGroup flush>

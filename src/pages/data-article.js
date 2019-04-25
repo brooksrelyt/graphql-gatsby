@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
-import { ListGroup, ListGroupItem, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 import SEO from '../components/seo'
+// eslint-disable-next-line
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -14,6 +14,7 @@ export const GatsbyQuery = graphql`
     umdHub {
       articles {
         data {
+        	slug
           title
           body
           subtitle
@@ -43,9 +44,9 @@ class ClientFetchingExample extends Component {
 		        <section className="col-md-9">
 		          <div className="tag-list">
 		            <ul class="list-inline">
-		              <li class="list-inline-item"><a href="">Highlighted</a></li>
-		              <li class="list-inline-item"><a href="">Innovation</a></li>
-		              <li class="list-inline-item"><a href="">Web Only</a></li>
+		              <li class="list-inline-item"><a href="/">Highlighted</a></li>
+		              <li class="list-inline-item"><a href="/">Innovation</a></li>
+		              <li class="list-inline-item"><a href="/">Web Only</a></li>
 		              <li class="list-inline-item">February 28, 2019</li>
 		            </ul>
 		          </div>
