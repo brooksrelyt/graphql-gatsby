@@ -14,7 +14,7 @@ export const GatsbyQuery = graphql`
     umdHub {
       articles {
         data {
-        	slug
+          slug
           title
           body
           subtitle
@@ -64,19 +64,7 @@ class ClientFetchingExample extends Component {
 		                <hr />
 		              </div>
 		              <div>
-		                <p>Stress fractures of the shin bones are one of the most common injuries that put runners on the couch, and athletes often simply slow down in an attempt to avoid them. But according to recently published research from the Department of Kinesiology, running fast doesn’t actually cause any more strain on runners’ tibias than running at a slower pace does.</p>
-
-		                <p>Assistant Professor Ross Miller and his research team, including doctoral students Jessica Hunter and Gina Garcia and Associate Professor Jae Kun Shim, studied 43 recreational runners as they circled a 50-meter track, first at a self-chosen moderate speed, and again alternating between slow and fast speeds.</p>
-
-		                <p>While each participant ran, the researchers measured three variables that affect the stress on their tibias: how quickly they transfer their weight onto their leg when taking a step, the pattern of their foot’s movement on the ground and how much weight their legs ultimately bore.</p>
-
-		                <p>The researchers found that conventional wisdom didn’t pan out: Both speeds contributed similarly to the stresses related to the first two variables, but when it came to the third, slow running caused participants’ tibias to bear more cumulative weight than fast running did. That’s because, when a runner’s pace slows, their stride shortens and their feet are in contact with the ground longer. The findings were published in the journal Medicine & Science in Sports & Exercise.</p>
-
-		                <p>“Of the variables we tested, the difference in step length between the fast and slow speeds had the greatest effect on cumulative tibial load,” Hunter told Runner’s World in an interview about the research. “Since step lengths were shorter at slower speeds, subjects needed to take more steps while running slower.”</p>
-
-		                <p>Because stress fractures are often attributed to running too fast or too intensely, interval training—alternating between fast and slow speeds—is thought to decrease risk of injury. Little is known, though, about how changing speeds affects the strain placed on a runner’s shins. This study clarifies the effect of interval training on stress fracture risk, suggesting that runners can add more fast running to their training programs without increasing their chance of injury.</p>
-
-		                <p>The study also has implications for how runners calculate the intensity of their workouts. Runners often measure the strain placed on their body by tracking the total distance and average speed of their runs, but the study’s results show that additional variables like changes in speed should also be tracked.</p>
+		                <p>{articles.data.body}</p>
 		              </div>
 		            </div>
 		          </div>

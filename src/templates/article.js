@@ -10,44 +10,40 @@ import Footer from "../components/footer"
 
 
 export default ({ data }) => {
-  const post = data.umdHub
   return (
     <div>
       <Header />
+      
       <div className="container spaces article">
         <div className="row">
           <section className="col-md-9">
-            <div className="tag-list">
-              <ul class="list-inline">
-                <li class="list-inline-item"><a href="/">Highlighted</a></li>
-                <li class="list-inline-item"><a href="/">Innovation</a></li>
-                <li class="list-inline-item"><a href="/">Web Only</a></li>
-                <li class="list-inline-item">February 28, 2019</li>
-              </ul>
-            </div>
-            <h1>{data[0].title}</h1>
-            {data[0].hero_image.map((hero, i) => (
-              <div key={i}>
-                <img className="img-fluid no-pad-top med-spaces" src={hero.url_1200_630} alt=" " />
+              <div className="tag-list">
+                <ul className="list-inline">
+                  <li className="list-inline-item"><a href="/">Highlighted</a></li>
+                  <li className="list-inline-item"><a href="/">Innovation</a></li>
+                  <li className="list-inline-item"><a href="/">Web Only</a></li>
+                  <li className="list-inline-item">February 28, 2019</li>
+                </ul>
               </div>
-            ))}
-            <div className="row article-content">
-              <div className="col-md-10 offset-md-1">
-                <h2 className="subheader">{articles.data[0].subtitle}</h2>
-                <div className="author"> 
-                  <p>By <a href="/">Jane Doe</a> | Photos by <a href="/">ISTOCK</a></p>
-                  <hr />
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h1>{data.umdHub.articles.data.articles.data[0].title}</h1>
+
+              <div className="row article-content">
+                <div className="col-md-10 offset-md-1">
+                  <h2 className="subheader">Subtitle</h2>
+                  <div className="author"> 
+                    <p>By <a href="/">Jane Doe</a> | Photos by <a href="/">ISTOCK</a></p>
+                    <hr />
+                  </div>
+                  <div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
                 </div>
               </div>
-            </div>
           </section>
           <aside className="col-md-3">
             <div>
@@ -95,17 +91,15 @@ export default ({ data }) => {
         </div>
       </div>
 
-
       <Footer />
     </div>
-
   )
 }
 
-
-export const query = graphql`
-  query($slug: String!) {
-    umdHub(articles: { data: { slug: { eq: $slug } } }) {
+// This query is executed at build time by Gatsby.
+export const GatsbyQuery = graphql`
+  query articleQuery {
+    umdHub {
       articles {
         data {
           id

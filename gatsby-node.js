@@ -3,9 +3,6 @@ const path = require(`path`)
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const articleTemplate = path.resolve(`./src/templates/article.js`)
-  // Query for markdown nodes to use in creating pages.
-  // You can query for whatever data you want to create pages for e.g.
-  // products, portfolio items, landing pages, etc.
   return graphql(`
     {
 	    umdHub {
@@ -41,12 +38,13 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog post pages.
     result.data.umdHub.articles.data.forEach(data => {
 		  createPage({
-		    path: `${data.slug}`,
+		    path: data.slug,
 		    component: articleTemplate,
 		    context: {
 		      slug: data.slug
 		    },
 		  })
 		})
+		return;
   })
 }

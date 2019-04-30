@@ -43,7 +43,7 @@ export default ({ data }) => (
             {data.umdHub.articles.data.slice(0, 6).map((article) => (
             <div className="col-md-6">
               <Card className="mb-5">
-                <Link to={node.fields.slug} >
+                <Link to={article.slug} >
                 {article.hero_image.map((hero, i) => (
                   <div key={i}>
                     <CardImg top width="100%" src={hero.url_1200_630} alt=" " />
