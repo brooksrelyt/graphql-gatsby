@@ -1,50 +1,52 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `umdHub`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
 
 exports.createPages = ({ graphql, actions }) => {
-  // **Note:** The graphql function call returns a Promise
-  // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
   const { createPage } = actions
+  const articleTemplate = path.resolve(`./src/templates/article.js`)
+  // Query for markdown nodes to use in creating pages.
+  // You can query for whatever data you want to create pages for e.g.
+  // products, portfolio items, landing pages, etc.
   return graphql(`
     {
 	    umdHub {
 	      articles {
 	        data {
-	        	slug
+	          id
 	          title
-	          body
 	          subtitle
+	          body
+	          summary
 	          hero_image {
 	            url_1200_630
 	          }
+	          authorship_date {
+	            formatted_short
+	            unix
+	            unix_int
+	            formatted_long
+	            formatted_short
+	            time
+	          }
+	          slug
 	        }
 	      }
 	    }
 	  }
   `
-).then(result => {
-    result.data.umdHub.articles.forEach(({ data }) => {
-      createPage({
-        path: articles.data.slug,
-        component: path.resolve(`./src/terp/article.js`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          slug: articles.data.slug,
-        },
-      })
-    })
+  ).then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+
+    // Create blog post pages.
+    result.data.umdHub.articles.data.forEach(data => {
+		  createPage({
+		    path: `${data.slug}`,
+		    component: articleTemplate,
+		    context: {
+		      slug: data.slug
+		    },
+		  })
+		})
   })
 }

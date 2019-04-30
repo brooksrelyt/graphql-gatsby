@@ -17,6 +17,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `http://localhost:8000/terp/`,
+      },
+    },
+    {
       resolve: `gatsby-source-graphql`,
       options: {
         typeName: `HUBAPI`,
