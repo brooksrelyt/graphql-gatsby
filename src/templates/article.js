@@ -9,7 +9,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 
 export default ({ data }) => {
-  console.log(data.umdHub.article)
+  const post = data.umdHub.articles.data
   return (
     <div>
       <Header />
@@ -26,6 +26,11 @@ export default ({ data }) => {
                 </ul>
               </div>
               <h1>hello</h1>
+              {post.map((article) => (
+                <div>
+                  <h1>{article.title}</h1>
+                </div>
+              ))}
 
               <div className="row article-content">
                 <div className="col-md-10 offset-md-1">
@@ -127,7 +132,7 @@ export default ({ data }) => {
 
 
 export const query = graphql`
-  query($id: String!) {
+  query ArticleQuery($id: String!) {
     umdHub {
        article(id: $id) {
         data {
