@@ -132,7 +132,7 @@ export default ({ data }) => {
 
 
 export const query = graphql`
-  query ArticleQuery($id: String!) {
+  query($id: String!) {
     umdHub {
        article(id: $id) {
         data {
