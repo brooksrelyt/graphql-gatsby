@@ -8,8 +8,8 @@ import Layout from "../components/layout"
 import Header from "../components/header"
 import Footer from "../components/footer"
 
-
 export default ({ data }) => {
+  console.log(data.umdHub.article)
   return (
     <div>
       <Header />
@@ -25,7 +25,7 @@ export default ({ data }) => {
                   <li className="list-inline-item">February 28, 2019</li>
                 </ul>
               </div>
-              <h1>{data.umdHub.articles.data.articles.data[0].title}</h1>
+              <h1>hello</h1>
 
               <div className="row article-content">
                 <div className="col-md-10 offset-md-1">
@@ -97,10 +97,39 @@ export default ({ data }) => {
 }
 
 // This query is executed at build time by Gatsby.
-export const GatsbyQuery = graphql`
-  query articleQuery {
+// export const query = graphql`
+//   query {
+//     umdHub {
+//        article(id: "73221c6f-b7aa-4cfd-9402-fa0ccf5e0579") {
+//         data {
+//           id
+//           title
+//           subtitle
+//           body
+//           summary
+//           hero_image {
+//             url_1200_630
+//           }
+//           authorship_date {
+//             formatted_short
+//             unix
+//             unix_int
+//             formatted_long
+//             formatted_short
+//             time
+//           }
+//           slug
+//         }
+//       }
+//     }
+//   }
+// `
+
+
+export const query = graphql`
+  query($id: String!) {
     umdHub {
-      articles {
+       article(id: $id) {
         data {
           id
           title

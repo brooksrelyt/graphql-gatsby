@@ -38,10 +38,11 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog post pages.
     result.data.umdHub.articles.data.forEach(data => {
 		  createPage({
-		    path: data.slug,
+		    path: data.id,
 		    component: articleTemplate,
+		    id: data.id,
 		    context: {
-		      slug: data.slug
+		      slug: `/articles/${data.slug}-${data.id}`
 		    },
 		  })
 		})
