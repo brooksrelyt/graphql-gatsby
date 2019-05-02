@@ -11,24 +11,9 @@ module.exports = {
     {
       resolve: `gatsby-source-graphql`,
       options: {
-        typeName: `RMAPI`,
-        fieldName: `rickAndMorty`,
-        url: `https://rickandmortyapi-gql.now.sh/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
         typeName: `HUBAPI`,
         fieldName: `umdHub`,
-        url: `https://hub-middleware.netlify.com/.netlify/functions/express/graphql/`,
-      },
-    },
-    `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `./src/data/`,
+        url: `https://umd-hub-middleware.herokuapp.com/graphql`,
       },
     },
     {
