@@ -1,4 +1,17 @@
 const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `umdHub`) {
+    const slug = createFilePath({ data, getNode, basePath: `pages` })
+    createNodeField({
+      data,
+      name: `id`,
+      value: id,
+    })
+  }
+}
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -40,7 +53,7 @@ exports.createPages = ({ graphql, actions }) => {
 		  createPage({
 		    path: `/articles/${data.slug}-${data.id}`,
 		    component: articleTemplate,
-		    id: data.id,
+		    id: `${data.id}`,
 		    context: {
 		      slug: `/articles/${data.slug}-${data.id}`
 		    },

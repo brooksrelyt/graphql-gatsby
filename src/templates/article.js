@@ -1,7 +1,6 @@
-/* eslint-disable */
 import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
-import { ListGroup, ListGroupItem, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { graphql } from 'gatsby'
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
 // eslint-disable-next-line
 import Layout from "../components/layout"
@@ -9,7 +8,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 
 export default ({ data }) => {
-  console.log(data)
+  console.log(data.umdHub.articles.data.article.title)
   return (
     <div>
       <Header />
@@ -65,34 +64,6 @@ export default ({ data }) => {
                 <span>February 27, 2019</span>
               </ListGroup>
             </div>
-
-            <div>
-              <ListGroup flush>
-                <ListGroupItem disabled tag="a" href="#">Web Only</ListGroupItem>
-                <ListGroupItem tag="a" href="#">Dapibus ac facilisis in</ListGroupItem>
-                <span>February 27, 2019</span>
-                <ListGroupItem tag="a" href="#">Morbi leo risus</ListGroupItem>
-                <span>February 27, 2019</span>
-                <ListGroupItem tag="a" href="#">Porta ac consectetur ac</ListGroupItem>
-                <span>February 27, 2019</span>
-                <ListGroupItem tag="a" href="#">Vestibulum at eros</ListGroupItem>
-                <span>February 27, 2019</span>
-              </ListGroup>
-            </div>
-
-            <div>
-              <ListGroup flush>
-                <ListGroupItem disabled tag="a" href="#">Popular Posts</ListGroupItem>
-                <ListGroupItem tag="a" href="#">Dapibus ac facilisis in</ListGroupItem>
-                <span>February 27, 2019</span>
-                <ListGroupItem tag="a" href="#">Morbi leo risus</ListGroupItem>
-                <span>February 27, 2019</span>
-                <ListGroupItem tag="a" href="#">Porta ac consectetur ac</ListGroupItem>
-                <span>February 27, 2019</span>
-                <ListGroupItem tag="a" href="#">Vestibulum at eros</ListGroupItem>
-                <span>February 27, 2019</span>
-              </ListGroup>
-            </div>
           </aside>
         </div>
       </div>
@@ -103,9 +74,9 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query articleQuery($id: String!) {
+  query($id:String!) {
     umdHub {
-       article(id: $id) {
+      article(id: $id) {
         data {
           id
           title
@@ -115,15 +86,6 @@ export const query = graphql`
           hero_image {
             url_1200_630
           }
-          authorship_date {
-            formatted_short
-            unix
-            unix_int
-            formatted_long
-            formatted_short
-            time
-          }
-          slug
         }
       }
     }
