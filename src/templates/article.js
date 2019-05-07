@@ -17,17 +17,17 @@ export default ({ data }) => {
       <div className="container spaces article">
         <div className="row">
           <section className="col-md-9">
-              <div className="tag-list">
-                <ul className="list-inline">
-                  <li className="list-inline-item"><a href="/">Highlighted</a></li>
-                  <li className="list-inline-item"><a href="/">Innovation</a></li>
-                  <li className="list-inline-item"><a href="/">Web Only</a></li>
-                  <li className="list-inline-item">February 28, 2019</li>
-                </ul>
-              </div>
-
               {data.umdHub.article.data.map((article) => (
                 <div>
+                  <div className="tag-list">
+                    <ul className="list-inline">
+                      <li className="list-inline-item"><a href="/">Highlighted</a></li>
+                      <li className="list-inline-item"><a href="/">Innovation</a></li>
+                      <li className="list-inline-item"><a href="/">Web Only</a></li>
+                      <li className="list-inline-item"><strong>{article.authorship_date.formatted_short}</strong></li>
+                    </ul>
+                  </div>
+
                   <h1>{article.title}</h1>
                   
                   {article.hero_image.map((hero, i) => (
@@ -41,7 +41,7 @@ export default ({ data }) => {
                       <h2 className="subheader">{article.subtitle}</h2>
                       {article.authors.map((author, index) => (
                         <div className="author" key={index}> 
-                          <p>By {author.name}</p>
+                          <p>By {author.name} | {article.authorship_date.formatted_short}</p>
                           <hr />
                         </div>
                       ))}
@@ -93,15 +93,10 @@ export const query = graphql`
             url_1200_630
           }
           authors {
-            id
-            title
             name
-            first_name
-            last_name
-            summary
-            body
-            slug
-            email
+          }
+          authorship_date {
+            formatted_short
           }
         }
       }
