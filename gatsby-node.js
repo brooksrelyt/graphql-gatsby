@@ -53,8 +53,8 @@ exports.createPages = ({ graphql, actions }) => {
 		  createPage({
 		    path: `/articles/${data.slug}-${data.id}`,
 		    component: articleTemplate,
-		    id: `${data.id}`,
 		    context: {
+		    	id: `${data.id}`,
 		      slug: `/articles/${data.slug}-${data.id}`
 		    },
 		  })

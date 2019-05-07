@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import Markdown from 'react-markdown'
 
 // eslint-disable-next-line
 import Layout from "../components/layout"
@@ -8,7 +9,7 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 
 export default ({ data }) => {
-  console.log(data.umdHub.articles.data.article.title)
+  console.log(data)
   return (
     <div>
       <Header />
@@ -24,31 +25,36 @@ export default ({ data }) => {
                   <li className="list-inline-item">February 28, 2019</li>
                 </ul>
               </div>
-              <h1>hello</h1>
 
-              {/* {data.umdHub.articles.data.map((article) => (
+              {data.umdHub.article.data.map((article) => (
                 <div>
                   <h1>{article.title}</h1>
-                </div>
-              ))} */}
+                  
+                  {article.hero_image.map((hero, i) => (
+                    <div key={i}>
+                      <img className="img-fluid no-pad-top med-spaces" src={hero.url_1200_630} alt=" " />
+                    </div>
+                  ))}
 
-              <div className="row article-content">
-                <div className="col-md-10 offset-md-1">
-                  <h2 className="subheader">Subtitle</h2>
-                  <div className="author"> 
-                    <p>By <a href="/">Jane Doe</a> | Photos by <a href="/">ISTOCK</a></p>
-                    <hr />
-                  </div>
-                  <div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <div className="row article-content">
+                    <div className="col-md-10 offset-md-1">
+                      <h2 className="subheader">{article.subtitle}</h2>
+                      {article.authors.map((author, index) => (
+                        <div className="author" key={index}> 
+                          <p>By {author.name}</p>
+                          <hr />
+                        </div>
+                      ))}
+                      <div>
+                        <Markdown
+                          source={article.body}
+                          escapeHtml={false}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
           </section>
           <aside className="col-md-3">
             <div>
@@ -85,6 +91,17 @@ export const query = graphql`
           summary
           hero_image {
             url_1200_630
+          }
+          authors {
+            id
+            title
+            name
+            first_name
+            last_name
+            summary
+            body
+            slug
+            email
           }
         }
       }
